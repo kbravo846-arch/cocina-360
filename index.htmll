@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es-CL">
 <head>
   <meta charset="UTF-8" />
@@ -6,6 +7,7 @@
 
   <title>Cocina 360 | Orden sanitario + recetas + números (Arica)</title>
   <meta name="description" content="Cocina 360 ayuda a restaurantes en Arica a ordenar HACCP, estandarizar recetas y revisar números. Agenda una videollamada gratis." />
+
 
   <style>
     :root{
