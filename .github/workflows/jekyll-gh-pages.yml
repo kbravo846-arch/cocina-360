@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Cocina 360 | Orden sanitario + recetas + números (Arica)</title>
+  <meta name="description" content="Cocina 360 ayuda a restaurantes en Arica a ordenar HACCP, estandarizar recetas y revisar números. Agenda una videollamada gratis." />
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0b0b0c;
+      --muted:#5a5f66;
+      --line:#e8eaee;
+      --chip:#f6f7f9;
+      --accent:#111111;
+      --shadow: 0 18px 50px rgba(0,0,0,.08);
+      --radius: 18px;
+      --max: 1080px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width: var(--max); margin:0 auto; padding: 22px;}
+    .topbar{
+      position: sticky;
+      top:0;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      z-index: 10;
+    }
+    .toprow{
+      max-width: var(--max);
+      margin:0 auto;
+      padding: 14px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+    }
+    .mark{
+      width:34px; height:34px;
+      border-radius: 12px;
+      background: var(--text);
+    }
+    .brand small{
+      display:block;
+      color: var(--muted);
+      font-weight: 650;
+      letter-spacing: 0;
+      margin-top:2px;
+    }
+
+    nav{
+      display:flex;
+      gap: 12px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    nav a{
+      color: var(--muted);
+      font-weight: 650;
+      padding: 8px 10px;
+      border-radius: 12px;
+    }
+    nav a:hover{ background: var(--chip); color: var(--text); }
+
+    .cta{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-weight: 800;
+      cursor:pointer;
+      transition: transform .08s ease, box-shadow .2s ease, background .2s ease;
+      white-space: nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); box-shadow: 0 10px 25px rgba(0,0,0,.08); }
+    .btn.primary{
+      background: var(--text);
+      color: #fff;
+      border-color: var(--text);
+    }
+    .btn.primary:hover{ box-shadow: 0 18px 40px rgba(0,0,0,.18); }
+
+    .hero{
+      padding: 42px 0 16px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.12fr .88fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    @media (max-width: 920px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      nav{ display:none; }
+    }
+
+    .panel{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background: var(--chip);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 750;
+      font-size: 13px;
+    }
+
+    h1{
+      margin: 12px 0 10px;
+      font-size: clamp(30px, 4.2vw, 48px);
+      line-height: 1.06;
+      letter-spacing: -0.8px;
+    }
+    .sub{
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 70ch;
+      margin: 0;
+    }
+
+    .points{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    @media (max-width: 520px){
+      .points{ grid-template-columns: 1fr; }
+    }
+    .point{
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 16px;
+      padding: 12px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .dot{
+      width:10px; height:10px;
+      border-radius: 99px;
+      background: var(--text);
+      margin-top: 6px;
+      flex: 0 0 auto;
+    }
+    .point b{ display:block; margin-bottom: 2px; }
+    .point span{ color: var(--muted); }
+
+    .side h3{ margin: 0 0 6px; letter-spacing:-.3px; }
+    .side p{ margin: 0 0 12px; color: var(--muted); }
+    .box{
+      border: 1px solid var(--line);
+      background: var(--chip);
+      border-radius: 16px;
+      padding: 14px;
+      margin-top: 12px;
+    }
+    .box strong{ display:block; }
+    .small{ font-size: 13px; color: var(--muted); }
+
+    .section{
+      padding: 16px 0;
+    }
+    .anchor{ scroll-margin-top: 90px; }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+    @media (max-width: 920px){
+      .cards{ grid-template-columns: 1fr; }
+    }
+    .card{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      background: #fff;
+    }
+    .card h3{ margin: 0 0 8px; letter-spacing:-.2px; }
+    .card p{ margin: 0; color: var(--muted); }
+
+    .hr{ height:1px; background: var(--line); margin: 14px 0; }
+
+    .footer{
+      padding: 18px 0 34px;
+      text-align:center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .mini-cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 14px;
+    }
+
+    /* botón flotante WhatsApp (móvil) */
+    .fab{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 20;
+      display:none;
+    }
+    @media (max-width: 920px){
+      .fab{ display:block; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div class="toprow">
+      <div class="brand" aria-label="Cocina 360">
+        <div class="mark" aria-hidden="true"></div>
+        <div>
+          Cocina 360
+          <small>Arica, Chile • orden sanitario + recetas + números</small>
+        </div>
+      </div>
+
+      <nav aria-label="Navegación">
+        <a href="#servicios">Servicios</a>
+        <a href="#como">Cómo trabajamos</a>
+        <a href="#agenda">Agenda</a>
+      </nav>
+
+      <div class="cta">
+        <a class="btn" href="tel:+56945475811">Llamar</a>
+        <a class="btn primary" target="_blank" rel="noopener"
+           href="https://wa.me/56945475811?text=Hola%20Cocina%20360.%20Quiero%20agendar%20una%20videollamada%20gratis%20para%20mi%20restaurante%20en%20Arica.%0A%0A1)%20Nombre%20restaurante%3A%20%0A2)%20Direcci%C3%B3n%3A%20%0A3)%20Problema%20principal%3A%20(HACCP%2Frecetario%2Ffinanzas)%0A4)%20Mejor%20horario%3A%20"
+        >Agendar videollamada gratis</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="panel">
+          <span class="kicker">✅ Menos teoría. Más implementación real.</span>
+          <h1>Tu cocina en orden.<br>Sanidad, recetas y rentabilidad.</h1>
+          <p class="sub">
+            Ayudamos a restaurantes en <b>Arica</b> a implementar buenas prácticas sanitarias basadas en HACCP,
+            estandarizar recetas (porciones y costos) y revisar números para tomar decisiones claras.
+          </p>
+
+          <div class="points" aria-label="Beneficios">
+            <div class="point">
+              <div class="dot"></div>
+              <div><b>HACCP práctico</b><span>Controles simples, registros que se usan.</span></div>
+            </div>
+            <div class="point">
+              <div class="dot"></div>
+              <div><b>Recetario estándar</b><span>Calidad constante y costos controlados.</span></div>
+            </div>
+            <div class="point">
+              <div class="dot"></div>
+              <div><b>Compras e inventario</b><span>Menos merma, más orden y trazabilidad.</span></div>
+            </div>
+            <div class="point">
+              <div class="dot"></div>
+              <div><b>Números claros</b><span>Margen por plato, alertas y mejoras.</span></div>
+            </div>
+          </div>
+
+          <div class="mini-cta">
+            <a class="btn primary" target="_blank" rel="noopener"
+               href="https://wa.me/56945475811?text=Hola%20Cocina%20360.%20Quiero%20agendar%20una%20videollamada%20gratis%20para%20mi%20restaurante%20en%20Arica."
+            >Agendar videollamada gratis</a>
+            <a class="btn" href="#servicios">Ver servicios</a>
+          </div>
+
+          <p class="small" style="margin-top:12px;">
+            Videollamada gratis (20–30 min). Diagnóstico + plan de acción inicial.
+          </p>
+        </div>
+
+        <aside class="panel side">
+          <h3>Agenda en 30 segundos</h3>
+          <p>Escríbenos por WhatsApp y te proponemos horarios.</p>
+
+          <div class="box">
+            <strong>WhatsApp / Llamadas</strong>
+            <div class="small">+56 9 4547 5811</div>
+          </div>
+
+          <div class="hr"></div>
+
+          <div class="box">
+            <strong>¿Qué revisamos en la llamada?</strong>
+            <div class="small">Sanidad (HACCP), recetas/costeo, compras, merma y números.</div>
+          </div>
+
+          <div class="mini-cta">
+            <a class="btn" href="tel:+56945475811">Llamar ahora</a>
+            <a class="btn primary" target="_blank" rel="noopener"
+               href="https://wa.me/56945475811?text=Hola%20Cocina%20360.%20Quiero%20agendar%20videollamada%20gratis.%0A%0A1)%20Nombre%20restaurante%3A%20%0A2)%20Direcci%C3%B3n%3A%20%0A3)%20Problema%20principal%3A%20%0A4)%20Mejor%20horario%3A%20"
+            >Abrir WhatsApp</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="section anchor">
+      <h2 style="margin:0; letter-spacing:-.3px;">Servicios</h2>
+      <p class="sub" style="margin-top:6px;">
+        Tres frentes, una sola meta: operación limpia, consistente y rentable.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>HACCP / Sanidad</h3>
+          <p>Mapeo de proceso, puntos críticos, controles y registros simples.</p>
+        </div>
+        <div class="card">
+          <h3>Recetario + Costeo</h3>
+          <p>Fichas por plato, porciones, mermas y estandarización del servicio.</p>
+        </div>
+        <div class="card">
+          <h3>Finanzas operativas</h3>
+          <p>Margen por plato, compras, inventario y señales de fuga de dinero.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CÓMO -->
+    <section id="como" class="section anchor">
+      <h2 style="margin:0; letter-spacing:-.3px;">Cómo trabajamos</h2>
+
+      <div class="cards">
+        <div class="card">
+          <h3>1) Diagnóstico</h3>
+          <p>Videollamada gratis: entendemos tu cocina y definimos prioridades.</p>
+        </div>
+        <div class="card">
+          <h3>2) Implementación</h3>
+          <p>Documentos y controles que el equipo realmente usa (sin burocracia).</p>
+        </div>
+        <div class="card">
+          <h3>3) Seguimiento</h3>
+          <p>Revisión de indicadores: sanidad, mermas, compras y margen.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- AGENDA -->
+    <section id="agenda" class="section anchor">
+      <div class="panel">
+        <h2 style="margin:0; letter-spacing:-.3px;">Agenda tu videollamada gratis</h2>
+        <p class="sub" style="margin-top:8px;">
+          Mándanos 3 datos y listo: <b>nombre del local</b>, <b>dirección</b> y <b>qué te preocupa más</b>
+          (sanidad / recetas / costos / compras / caja).
+        </p>
+
+        <div class="mini-cta">
+          <a class="btn primary" target="_blank" rel="noopener"
+             href="https://wa.me/56945475811?text=Hola%20Cocina%20360.%20Quiero%20agendar%20una%20videollamada%20gratis.%0A%0A1)%20Nombre%20restaurante%3A%20%0A2)%20Direcci%C3%B3n%3A%20%0A3)%20Problema%20principal%3A%20%0A4)%20Mejor%20horario%3A%20"
+          >Agendar por WhatsApp</a>
+
+          <a class="btn" href="tel:+56945475811">Llamar +56 9 4547 5811</a>
+        </div>
+
+        <p class="small" style="margin-top:10px;">
+          *Cocina 360 entrega implementación y control operativo. No reemplaza fiscalización sanitaria ni asesoría legal.
+        </p>
+      </div>
+    </section>
+
+    <div class="footer">
+      © <span id="year"></span> Cocina 360 • Arica, Chile
+    </div>
+  </main>
+
+  <!-- Botón flotante WhatsApp para móvil -->
+  <a class="btn primary fab" target="_blank" rel="noopener"
+     href="https://wa.me/56945475811?text=Hola%20Cocina%20360.%20Quiero%20agendar%20videollamada%20gratis%20para%20mi%20restaurante%20en%20Arica."
+     aria-label="WhatsApp Cocina 360">
+    WhatsApp
+  </a>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
